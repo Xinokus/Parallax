@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --index: calc(1vw + 1vh);
+    --text: rgb(255, 240, 204);
+    --transition: transform .75s cubic-bezier(0.075, 0.5, 0, 1);
+}
+@font-face {
+    font-family: "Raleway Black";
+    src: url(../fonts/raleway-black.woff2);
+    font-weight: 900;
+}
+@font-face {
+    font-family: "Raleway Regular";
+    src: url(../fonts/raleway-regular.woff2);
+}
+body{
+    background-color: black;
+    color: white;
+    font-family: "Raleway Regular", sans-serif;
+    line-height: 1.55;
+}
+.main_header{
+    position: relative;
+}
+.main_header::after{
+    content: '';
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: calc(var(--index) * 10);
+    background-image: url(../img/ground.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    bottom: calc(var(--index) * -4.5);
+}
+.layers{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.layer{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    z-index: 2;
+    transition: var(--transition);
+}
+.layers_base{
+    transform: translate3d(0, calc(var(--scrollTop) / 1.6), 0);
+    z-index: 0;
+}
+.layers_middle{
+    transform: translate3d(0, calc(var(--scrollTop) / 2.6), 0);
+}
+.layers_front{
+    transform: translate3d(0, calc(var(--scrollTop) / 5.7), 0);
+}
+.layer_header{
+    z-index: 1;
+    transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
+    will-change: transform;
+    text-transform: uppercase;
+    font-family: "Raleway Black";
+    position: relative;
+    top: -1.5vh;
+    color: var(--text);
+    text-shadow: 0 0 0.8vw rgb(255, 216, 123);
+    transition: var(--transition);
+}
+.layer_title{
+    font-size: calc(var(--index) * 2.5);
+    letter-spacing: calc(var(--index) * 0.5);
+}
+.layer_caption{
+    font-size: calc(var(--index));
+    letter-spacing: calc(var(--index) * 0.2);
+}
+.main_article{
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+.main-article_header{
+    text-transform: uppercase;
+    font-size: calc(var(--index) * 1.8);
+    letter-spacing: calc(var(--index) / 7.5);
+    font-family: "Raleway Black";
+    transform: translate3d(0, calc(var(--scrollTop) / -10), 0);
+    will-change: transform;
+    transition: var(--transition);
+}
+.main-article_paragraph{
+    font-size: calc(var(--index) / 1.2);
+    max-width: calc(var(--index) * 30);
+    margin-top: calc(var(--index) * 1);
+    transform: translate3d(0, calc(var(--scrollTop) / -10), 0);
+    will-change: transform;
+    transition: var(--transition);
+}
+.content{
+    will-change: transform;
+}
